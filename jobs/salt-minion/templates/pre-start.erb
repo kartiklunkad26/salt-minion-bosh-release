@@ -1,5 +1,21 @@
 #!/bin/bash
 
+# abort script on any command that exits with a non zero value
 set -ex
 
-/sbin/stop salt-minion && /sbin/start salt-minion
+CHECK_FILE=/etc/init/salt-minion.conf
+
+if [ ! -f $CHECK_FILE ]; then
+  mkdir -p /tmp/salt-bootstrap
+
+  # download the bootsrap_salt script for the installation
+  curl -o /tmp/salt-bootstrap/bootstrap_salt.sh -L https://bootstrap.saltstack.com
+
+  # run the bootstrap_salt script
+  sudo sh /tmp/salt-bootstrap/bootstrap_salt.sh git v2016.3.1
+fi
+
+cp /var/vcap/jobs/salt-minion/config/minion /etc/salt/minion
+
+/sbin/stop salt-minion 
+/sbin/start salt-minion
