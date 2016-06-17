@@ -1,0 +1,11 @@
+---
+name: salt-minion
+templates:
+  salt_minion_conf.erb: /etc/salt/minion
+  pre-start.erb: bin/pre-start
+packages:
+- salt-bootstrap
+properties:
+  salt-minion.master:
+    description: Salt Master location
+    default: ""

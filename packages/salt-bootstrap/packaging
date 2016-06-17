@@ -1,0 +1,11 @@
+# abort script on any command that exits with a non zero value
+set -e
+
+mkdir -p ${BOSH_INSTALL_TARGET}/bin
+
+# download the bootsrap_salt script for the installation
+curl -o ${BOSH_INSTALL_TARGET}/bin/bootstrap_salt.sh -L https://bootstrap.saltstack.com
+
+# run the bootstrap_salt script
+sudo sh ${BOSH_INSTALL_TARGET}/bin/bootstrap_salt.sh git v2016.3.1
+
