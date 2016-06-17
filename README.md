@@ -1,0 +1,1 @@
+# salt-minion-bosh-release
