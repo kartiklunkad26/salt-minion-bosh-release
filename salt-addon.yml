@@ -1,0 +1,12 @@
+releases:
+- {name: salt-minion, version: 'latest'}
+
+addons:
+- name: salt-minion
+  jobs:
+  - name: salt-minion
+    release: salt-minion
+  properties:
+    salt-minion:
+      master: 1.2.3.4
+
