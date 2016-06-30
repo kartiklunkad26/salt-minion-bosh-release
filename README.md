@@ -10,8 +10,8 @@ To use this BOSH release, first create the dev release, then the final release, 
 
 ```
 bosh target BOSH_HOST
-git clone https://github.com/tracyde/clamav-boshrelease.git
-cd clamav-boshrelease
+git clone https://github.com/kartiklunkad26/salt-minion-bosh-release.git
+cd salt-minion-bosh-release
 bosh create release --force
 bosh create release --force --final
 bosh upload release
