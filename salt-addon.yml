@@ -1,5 +1,5 @@
 releases:
-- {name: salt-minion, version: 'latest'}
+- {name: salt-minion, version: '1.0.0'}
 
 addons:
 - name: salt-minion
