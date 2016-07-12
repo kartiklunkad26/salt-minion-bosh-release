@@ -4,3 +4,4 @@ name: salt-bootstrap
 dependencies:
 
 files:
+- salt/placeholder
