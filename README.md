@@ -12,8 +12,8 @@ To use this BOSH release, first create the dev release, then the final release, 
 bosh target BOSH_HOST
 git clone https://github.com/kartiklunkad26/salt-minion-bosh-release.git
 cd salt-minion-bosh-release
-bosh create release --force
-bosh create release --force --final
+bosh create release --force --version 1.0.0
+bosh create release --force --version 1.0.0 --final
 bosh upload release
 ```
 
