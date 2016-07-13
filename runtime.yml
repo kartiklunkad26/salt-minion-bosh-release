@@ -1,0 +1,44 @@
+releases:
+- {name: clamav, version: 0.1.0}
+- {name: salt-minion, version: 1.0.1}
+- {name: ipsec, version: 1.0.1}
+
+addons:
+- name: clamav-addon
+  jobs:
+  - name: clamav
+    release: clamav
+  properties:
+    clamav:
+        dbMirror1: db.local.clamav.net
+        dbMirror2: database.clamav.net
+        useProxy: false
+- name: salt-minion
+  jobs:
+  - name: salt-minion
+    release: salt-minion
+  properties:
+    salt-minion:
+      master: 1.2.3.4
+- name: ipsec-addon
+  jobs:
+  - name: ipsec
+    release: ipsec
+  properties:
+    ipsec:
+      ipsec_subnets:
+      - 10.0.16.0/20
+      no_ipsec_subnets:
+      - 10.0.16.1/32   # gateway
+      - 10.0.16.10/32  # bosh director
+      instance_certificate: |
+        -----BEGIN CERTIFICATE-----
+        -----END CERTIFICATE-----
+      instance_private_key: |
+        -----BEGIN RSA PRIVATE KEY-----
+          -----END RSA PRIVATE KEY-----
+      ca_certificates:
+        - |
+          -----BEGIN CERTIFICATE-----
+           -----END CERTIFICATE-----
+      prestart_timeout: 30
